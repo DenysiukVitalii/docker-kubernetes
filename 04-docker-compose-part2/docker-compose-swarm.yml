@@ -1,0 +1,53 @@
+services:
+  app:
+    image: simple-app:latest
+    ports:
+      - "8080:3000"
+    env_file:
+      - ./simple-app/.env
+    volumes:
+      - ./simple-app:/app
+      - node_modules_cache:/app/node_modules
+      - appdata:/app/data
+    depends_on:
+      - db
+      - redis
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/healthz || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - ./simple-app/.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+  
+volumes:
+  db_data:
+  node_modules_cache:
+  redis_data:
+  appdata:
