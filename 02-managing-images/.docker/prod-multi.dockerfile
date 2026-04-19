@@ -29,4 +29,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 RUN addgroup -S app && adduser -S app -G app
 
+USER app
+
+EXPOSE 80
+
 CMD ["node", "server.js"]
