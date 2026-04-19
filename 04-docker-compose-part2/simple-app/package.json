@@ -1,0 +1,36 @@
+{
+  "name": "simple-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "next": "16.2.3",
+    "pg": "^8.20.0",
+    "prettier": "^3.8.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "redis": "^5.12.1",
+    "sass": "^1.99.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "prisma": "^7.7.0",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "@hono/node-server": "1.19.14"
+  }
+}
