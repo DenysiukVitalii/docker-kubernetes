@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-app
+spec:
+  replicas: 10
+  # strategy:
+  # type: RollingUpdate
+  # rollingUpdate:
+  #   maxUnavailable: 1
+  #   maxSurge: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: simple-app
+  template:
+    metadata:
+      labels:
+        app: simple-app
+    spec:
+      containers:
+        - name: simple-app
+          image: vitaliidenysiuk97/simple-app-prod-multi:v0.0.2
+          ports:
+            - containerPort: 80
