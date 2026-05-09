@@ -7,12 +7,12 @@ spec:
 
   selector:
     matchLabels:
-      {{- include "simple-app.labels" . | nindent 4 }}
+      {{- include "simple-app.labels" . | nindent 6 }}
 
   template:
     metadata:
       labels:
-        {{- include "simple-app.labels" . | nindent 6 }}
+        {{- include "simple-app.labels" . | nindent 8 }}
 
     spec:
       containers:
