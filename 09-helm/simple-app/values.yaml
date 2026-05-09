@@ -1,0 +1,39 @@
+replicaCount: 2
+
+image:
+  repository: vitaliidenysiuk97/simple-app-prod-multi
+  tag: v0.0.2
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: simple-app.127.0.0.1.sslip.io
+  path: /
+  tls:
+    enabled: true
+    secretName: simple-app-tls
+
+config:
+  APP_VERSION: "v2"
+  APP_MESSAGE: "Hello from ConfigMap v2"
+
+redis:
+  url: redis://redis-master:6379
+
+probes:
+  liveness:
+    path: /
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    failureThreshold: 3
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    failureThreshold: 3
