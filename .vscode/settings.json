@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "*.tpl": "helm",
+    "*/templates/*.yaml": "helm"
+  }
+}
