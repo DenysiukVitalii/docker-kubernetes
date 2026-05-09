@@ -98,3 +98,7 @@ Recreate — спочатку всі старі видаляються, поті
 - коли дві версії не можуть працювати разом
 
 RollingUpdate використовується значно частіше, а Recreate — більш рідкісний сценарій
+
+## P.S. Include configmap to deployment
+
+![alt text](<screenshots/Screenshot 2026-05-09 at 11.56.59-1.png>)
