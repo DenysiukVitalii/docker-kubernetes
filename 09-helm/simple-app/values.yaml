@@ -24,7 +24,7 @@ config:
   APP_MESSAGE: "Hello from ConfigMap v2"
 
 redis:
-  url: redis://redis-master:6379
+  url: redis://dragonfly:6379
 
 probes:
   liveness:
